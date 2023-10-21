@@ -11,20 +11,21 @@ export class App extends Component {
     bad: 0,
   };
 
+  onLeaveFeedback = name => {
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
+  };
+
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   }
 
   countPositivFeedbackPersentage() {
-    return this.state.good === 0
-      ? 0
-      : ((this.state.good / this.countTotalFeedback) * 100).toFixed(2);
+    const { good } = this.state;
+    return this.countTotalFeedback() > 0
+      ? ((good / this.countTotalFeedback()) * 100).toFixed(2)
+      : 0;
   }
-
-  onLeaveFeedback = name => {
-    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
-  };
 
   render() {
     const { good, neutral, bad } = this.state;
@@ -33,7 +34,7 @@ export class App extends Component {
 
     return (
       <div>
-        <Section title="Please leave feed back">
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
