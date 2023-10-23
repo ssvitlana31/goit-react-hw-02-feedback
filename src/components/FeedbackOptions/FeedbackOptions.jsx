@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button, WrapperFeedback } from './FeedbackOptions-styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <>
-      <ul className="btn-list">
-        {options.map(option => (
-          <li key={option}>
-            <button onClick={() => onLeaveFeedback(option)} className="btn">
-              {option}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </>
+    <WrapperFeedback>
+      {options.map(option => (
+        <li key={option}>
+          <Button onClick={() => onLeaveFeedback(option)}>{option}</Button>
+        </li>
+      ))}
+    </WrapperFeedback>
   );
 };
 

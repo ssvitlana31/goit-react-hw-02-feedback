@@ -3,6 +3,8 @@ import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './NotificationMessage/NotificationMessage';
+import { Container } from './App-styled';
+import { createGlobalStyle } from 'styled-components';
 
 export class App extends Component {
   state = {
@@ -33,12 +35,14 @@ export class App extends Component {
     const positiv = this.countPositivFeedbackPersentage();
 
     return (
-      <div>
+      <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
           />
+        </Section>
+        <Section>
           {total > 0 ? (
             <Statistics
               good={good}
@@ -51,7 +55,7 @@ export class App extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </div>
+      </Container>
     );
   }
 }
