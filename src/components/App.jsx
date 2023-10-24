@@ -4,7 +4,6 @@ import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './NotificationMessage/NotificationMessage';
 import { Container } from './App-styled';
-import { createGlobalStyle } from 'styled-components';
 
 export class App extends Component {
   state = {
